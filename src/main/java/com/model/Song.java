@@ -12,19 +12,19 @@ public class Song {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NotBlank
+    @NotBlank(message = "Field must not be blank; ")
     @Size(max = 800)
-    @Pattern(regexp = "^[^@;,.=+$*%]+$")
+    @Pattern(regexp = "^[^@;,.=+$*%]+$", message = "Cannot contain special characters: '@;,.=+$*%'; ")
     private String title;
 
-    @NotBlank
+    @NotBlank(message = "Field must not be blank; ")
     @Size(max = 300)
-    @Pattern(regexp = "^[^@;,.=+$*%]+$")
+    @Pattern(regexp = "^[^@;,.=+$*%]+$", message = "Cannot contain special characters: '@;,.=+$*%'; ")
     private String artist;
 
-    @NotBlank
+    @NotBlank(message = "Field must not be blank; ")
     @Size(max = 1000)
-    @Pattern(regexp = "^[^@;.=+$*%]+$")
+    @Pattern(regexp = "^[^@;.=+$*%]+$", message = "Cannot contain special characters: '@;,.=+$*%'; ")
     private String genre;
 
     public Song() {
