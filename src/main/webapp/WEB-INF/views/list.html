@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head th:replace="~{layout :: head}">
+    <title>List</title>
+</head>
+
+<body>
+<h2>Interesting Songs for You</h2>
+<p style="margin-left: 5px">
+    <a th:href="@{/songs/create}"> Add new song </a>
+</p>
+
+<div th:if="${message}" class="notify">
+    <span th:text="${message}"></span>
+</div>
+
+<table id="list">
+    <thead>
+    <tr>
+        <th>Title</th>
+        <th>Artist</th>
+        <th>Music Genre</th>
+        <th>Update Information</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="row : ${songs}">
+        <td th:text="${row.title}"></td>
+        <td th:text="${row.artist}"></td>
+        <td th:text="${row.genre}"></td>
+        <td><a th:href="@{/songs/{id}/update(id=${row.id})}">Update</a></td>
+    </tr>
+    </tbody>
+</table>
+
+<div th:insert="~{/layout :: footer}"></div>
+</body>
+</html>
